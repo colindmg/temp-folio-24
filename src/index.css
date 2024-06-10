@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* IMPORT DE LA FONT SPACE GROTESK */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-VariableFont.ttf") format("truetype");
+}
+
 /* EFFET DE BUBBLE GRADIENTS */
 :root {
   --color-bg1: #141414;
