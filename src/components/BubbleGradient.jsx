@@ -1,37 +1,33 @@
 import { useEffect, useRef } from "react";
 
 const BubbleGradient = () => {
-  const interBubbleRef = useRef(null);
+  // const interBubbleRef = useRef(null);
 
   useEffect(() => {
-    const interBubble = interBubbleRef.current;
-    let curX = 0;
-    let curY = 0;
-    let tgX = 0;
-    let tgY = 0;
-
-    function move() {
-      curX += (tgX - curX) / 20;
-      curY += (tgY - curY) / 20;
-      if (interBubble) {
-        interBubble.style.transform = `translate(${Math.round(
-          curX
-        )}px, ${Math.round(curY)}px)`;
-      }
-      requestAnimationFrame(move);
-    }
-
-    function handleMouseMove(event) {
-      tgX = event.clientX;
-      tgY = event.clientY;
-    }
-
-    window.addEventListener("mousemove", handleMouseMove);
-    move();
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    // const interBubble = interBubbleRef.current;
+    // let curX = 0;
+    // let curY = 0;
+    // let tgX = 0;
+    // let tgY = 0;
+    // function move() {
+    //   curX += (tgX - curX) / 20;
+    //   curY += (tgY - curY) / 20;
+    //   if (interBubble) {
+    //     interBubble.style.transform = `translate(${Math.round(
+    //       curX
+    //     )}px, ${Math.round(curY)}px)`;
+    //   }
+    //   requestAnimationFrame(move);
+    // }
+    // function handleMouseMove(event) {
+    //   tgX = event.clientX;
+    //   tgY = event.clientY;
+    // }
+    // window.addEventListener("mousemove", handleMouseMove);
+    // move();
+    // return () => {
+    //   window.removeEventListener("mousemove", handleMouseMove);
+    // };
   }, []);
 
   return (
@@ -60,7 +56,7 @@ const BubbleGradient = () => {
         <div className="g3"></div>
         <div className="g4"></div>
         <div className="g5"></div>
-        <div className="interactive" ref={interBubbleRef}></div>
+        {/* <div className="interactive" ref={interBubbleRef}></div> */}
       </div>
     </div>
   );
