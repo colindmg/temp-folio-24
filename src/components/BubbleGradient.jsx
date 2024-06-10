@@ -1,34 +1,32 @@
-import { useEffect, useRef } from "react";
-
 const BubbleGradient = () => {
   // const interBubbleRef = useRef(null);
 
-  useEffect(() => {
-    // const interBubble = interBubbleRef.current;
-    // let curX = 0;
-    // let curY = 0;
-    // let tgX = 0;
-    // let tgY = 0;
-    // function move() {
-    //   curX += (tgX - curX) / 20;
-    //   curY += (tgY - curY) / 20;
-    //   if (interBubble) {
-    //     interBubble.style.transform = `translate(${Math.round(
-    //       curX
-    //     )}px, ${Math.round(curY)}px)`;
-    //   }
-    //   requestAnimationFrame(move);
-    // }
-    // function handleMouseMove(event) {
-    //   tgX = event.clientX;
-    //   tgY = event.clientY;
-    // }
-    // window.addEventListener("mousemove", handleMouseMove);
-    // move();
-    // return () => {
-    //   window.removeEventListener("mousemove", handleMouseMove);
-    // };
-  }, []);
+  //useEffect(() => {
+  // const interBubble = interBubbleRef.current;
+  // let curX = 0;
+  // let curY = 0;
+  // let tgX = 0;
+  // let tgY = 0;
+  // function move() {
+  //   curX += (tgX - curX) / 20;
+  //   curY += (tgY - curY) / 20;
+  //   if (interBubble) {
+  //     interBubble.style.transform = `translate(${Math.round(
+  //       curX
+  //     )}px, ${Math.round(curY)}px)`;
+  //   }
+  //   requestAnimationFrame(move);
+  // }
+  // function handleMouseMove(event) {
+  //   tgX = event.clientX;
+  //   tgY = event.clientY;
+  // }
+  // window.addEventListener("mousemove", handleMouseMove);
+  // move();
+  // return () => {
+  //   window.removeEventListener("mousemove", handleMouseMove);
+  // };
+  //}, []);
 
   return (
     <div className="gradient-bg absolute top-0 left-0 h-full w-full z-10">

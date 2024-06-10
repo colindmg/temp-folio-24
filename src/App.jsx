@@ -33,6 +33,12 @@ function App() {
               LINKEDIN
             </span>
           </a>
+          <a href="mailto:colin.demouge@gmail.com" className="group">
+            →{" "}
+            <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
+              EMAIL
+            </span>
+          </a>
         </div>
 
         <BubbleGradient />
