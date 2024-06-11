@@ -8,6 +8,10 @@
   src: url("/fonts/SpaceGrotesk-VariableFont.ttf") format("truetype");
 }
 
+body {
+  overflow: hidden;
+}
+
 /* EFFET DE BUBBLE GRADIENTS */
 :root {
   --color-bg1: #191919;

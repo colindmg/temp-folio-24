@@ -27,7 +27,8 @@ const Texts = () => {
         <h2 className="text-2xl font-thin">Freelance web developer</h2>
         <VideoButton />
       </div>
-      <div className="z-50 flex flex-col gap-1 font-grotesk text-xl items-start">
+
+      <div className="z-50 flex flex-col gap-1 font-grotesk text-xl items-start sm:self-end">
         {linksList.map((link) => (
           <a key={link.href} href={link.href} className="group">
             →{" "}
