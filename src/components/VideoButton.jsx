@@ -62,9 +62,9 @@ const VideoButton = () => {
         }}
       >
         <p
-          className={`${
-            isOpen ? "opacity-100 h-fit" : "opacity-0 h-0 w-0"
-          } absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:rotate-45 transition-all duration-300`}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:rotate-45 transition-all duration-300 ${
+            isOpen ? "" : "hidden"
+          }`}
         >
           ✦
         </p>
