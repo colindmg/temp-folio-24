@@ -20,11 +20,14 @@ const linksList = [
 const Texts = () => {
   return (
     <>
-      <div className="z-50 pointer-events-none">
-        <h1 className="text-4xl relative font-grotesk">Col&apos;</h1>
-        <h2 className="text-2xl font-grotesk font-thin mt-1">
-          Freelance web developer
-        </h2>
+      <div className="z-50 font-grotesk pointer-events-none flex flex-col items-start gap-1">
+        <h1 className="text-4xl relative">Col&apos;</h1>
+        <h2 className="text-2xl font-thin">Freelance web developer</h2>
+        <div className="uppercase tracking-wider text-neutral-800 bg-white rounded-full px-4 py-0.5 mt-1 cursor-pointer pointer-events-auto">
+          <p>
+            WORK EXCERPT<span className="ml-2">✶</span>
+          </p>
+        </div>
       </div>
       <div className="z-50 flex flex-col gap-1 font-grotesk text-xl items-start">
         {linksList.map((link) => (
