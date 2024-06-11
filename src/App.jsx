@@ -5,7 +5,7 @@ import noiseImage from "/img/noise.webp";
 function App() {
   return (
     <>
-      <div className="relative text-white h-screen w-screen bg-[#141414] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 py-24">
+      <div className="relative text-white h-dvh w-screen bg-[#141414] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
         <Texts />
         <BubbleGradient />
         <div
