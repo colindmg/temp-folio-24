@@ -39,13 +39,13 @@ const VideoButton = () => {
           setIsOpenButtonShown(false);
         }}
       >
-        <p className={`${isOpen ? "opacity-0 w-0" : "opacity-100"}`}>
+        <p className={`${isOpen ? "opacity-0 w-0" : "opacity-100"} mr-2`}>
           WORK EXCERPT
         </p>
         <p
           className={`${
             isOpen ? "opacity-0 w-0" : "opacity-100"
-          } ml-2 group-hover:animate-spin`}
+          } group-hover:animate-spin`}
         >
           ✶
         </p>
