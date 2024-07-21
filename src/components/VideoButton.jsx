@@ -4,6 +4,12 @@ const VideoButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenButtonShown, setIsOpenButtonShown] = useState(true);
 
+  // GESTION DES SONS D'OUVERTURE/FERMETURE DE LA VIDÉO
+  const openSound = new Audio("/sounds/open.wav");
+  const closeSound = new Audio("/sounds/close.wav");
+  openSound.volume = 0.25;
+  closeSound.volume = 0.25;
+
   return (
     <div
       className={`flex gap-2 items-start mt-1 ${
@@ -36,6 +42,7 @@ const VideoButton = () => {
         } ${isOpen ? "hidden" : ""}`}
         onClick={() => {
           setIsOpen(!isOpen);
+          openSound.play();
           setIsOpenButtonShown(false);
         }}
       >
@@ -58,6 +65,7 @@ const VideoButton = () => {
         }`}
         onClick={() => {
           setIsOpen(!isOpen);
+          closeSound.play();
           setTimeout(() => setIsOpenButtonShown(true), 300);
         }}
       >
