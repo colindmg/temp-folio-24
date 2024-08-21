@@ -27,7 +27,7 @@ function App() {
           <Texts setShowExperiments={setShowExperiments} />
           <BubbleGradient />
           <div
-            className="absolute top-0 left-0 w-full h-full z-30 bg-repeat opacity-[0.03] pointer-events-none"
+            className="absolute top-0 left-0 w-full h-full z-[15] bg-repeat opacity-[0.03] pointer-events-none"
             style={{ backgroundImage: `url(${noiseImage})` }}
           ></div>
         </div>
