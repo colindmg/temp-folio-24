@@ -9,10 +9,6 @@ const linksList = [
     href: "https://github.com/colindmg",
     text: "GITHUB",
   },
-  // {
-  //   href: "https://www.linkedin.com/in/colin-demouge/",
-  //   text: "LINKEDIN",
-  // },
   {
     href: "mailto:colin.demouge@gmail.com",
     text: "EMAIL",
@@ -21,34 +17,43 @@ const linksList = [
 
 const Texts = () => {
   // GESTION DES SONS
-  // const openSound = new Audio("/sounds/open.wav");
-  // const closeSound = new Audio("/sounds/close.wav");
-  // openSound.volume = 0.25;
-  // closeSound.volume = 0.25;
+  const openSound = new Audio("/sounds/open.wav");
+  const closeSound = new Audio("/sounds/close.wav");
+
+  const playOpenSound = () => {
+    openSound.currentTime = 0;
+    openSound.volume = 0.25;
+    openSound.play();
+  };
+
+  const playCloseSound = () => {
+    closeSound.currentTime = 0;
+    closeSound.volume = 0.25;
+    closeSound.play();
+  };
 
   return (
     <>
       <div className="z-50 font-grotesk pointer-events-none flex flex-col items-start gap-1">
         <h1 className="text-4xl relative">Col&apos;</h1>
         <h2 className="text-2xl font-thin">Freelance web developer</h2>
-        <VideoButton />
+        <VideoButton
+          playCloseSound={playCloseSound}
+          playOpenSound={playOpenSound}
+        />
       </div>
 
-      <div className="z-50 flex flex-col gap-1 font-grotesk text-xl items-start sm:self-end">
+      <div className="z-50 flex flex-col font-grotesk text-xl items-start sm:self-end">
         {linksList.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="group"
+            className="group peer py-0.5"
             onMouseEnter={() => {
-              const closeSound = new Audio("/sounds/close.wav");
-              closeSound.volume = 0.25;
-              closeSound.play();
+              playCloseSound();
             }}
             onClick={() => {
-              const openSound = new Audio("/sounds/open.wav");
-              openSound.volume = 0.25;
-              openSound.play();
+              playOpenSound();
             }}
           >
             →{" "}

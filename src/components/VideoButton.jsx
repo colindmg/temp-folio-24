@@ -1,14 +1,10 @@
 import { useState } from "react";
 
-const VideoButton = () => {
+import PropTypes from "prop-types";
+
+const VideoButton = ({ playCloseSound, playOpenSound }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenButtonShown, setIsOpenButtonShown] = useState(true);
-
-  // GESTION DES SONS D'OUVERTURE/FERMETURE DE LA VIDÉO
-  const openSound = new Audio("/sounds/open.wav");
-  const closeSound = new Audio("/sounds/close.wav");
-  openSound.volume = 0.25;
-  closeSound.volume = 0.25;
 
   return (
     <div
@@ -42,7 +38,7 @@ const VideoButton = () => {
         } ${isOpen ? "hidden" : ""}`}
         onClick={() => {
           setIsOpen(!isOpen);
-          openSound.play();
+          playOpenSound();
           setIsOpenButtonShown(false);
         }}
       >
@@ -65,7 +61,7 @@ const VideoButton = () => {
         }`}
         onClick={() => {
           setIsOpen(!isOpen);
-          closeSound.play();
+          playCloseSound();
           setTimeout(() => setIsOpenButtonShown(true), 300);
         }}
       >
@@ -79,6 +75,11 @@ const VideoButton = () => {
       </button>
     </div>
   );
+};
+
+VideoButton.propTypes = {
+  playCloseSound: PropTypes.func.isRequired,
+  playOpenSound: PropTypes.func.isRequired,
 };
 
 export default VideoButton;
