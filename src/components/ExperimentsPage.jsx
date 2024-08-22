@@ -1,4 +1,9 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import PropTypes from "prop-types";
+import { useRef } from "react";
+
+gsap.registerPlugin(useGSAP);
 
 const linksList = [
   {
@@ -36,6 +41,40 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
     closeSound.play();
   };
 
+  // ANIMATION GSAP
+  const titleRef = useRef(null);
+  const linksRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useGSAP(() => {
+    if (isVisible) {
+      gsap.from(titleRef.current, {
+        duration: 1,
+        filter: "blur(10px)",
+        opacity: 0,
+        ease: "power2.out",
+      });
+
+      gsap.from(linksRef.current.children, {
+        duration: 0.8,
+        y: 10,
+        filter: "blur(5px)",
+        opacity: 0,
+        stagger: 0.1,
+        delay: 0.3,
+        ease: "power2.out",
+      });
+
+      gsap.from(closeButtonRef.current, {
+        opacity: 0,
+        filter: "blur(5px)",
+        duration: 0.5,
+        delay: 0.8,
+        ease: "power2.out",
+      });
+    }
+  }, [isVisible]);
+
   return (
     <div
       style={{
@@ -50,10 +89,15 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
       className="z-30 h-dvh w-screen fixed top-0 left-0 bg-[#F9F4FA] flex flex-col justify-center items-center gap-10 text-[#141414] font-grotesk transition-opacity duration-500 ease-in-out"
     >
       {/* TITLE */}
-      <h1 className="text-3xl relative uppercase font-medium">Experiments</h1>
+      <h1 ref={titleRef} className="text-3xl relative uppercase font-medium">
+        Experiments
+      </h1>
 
       {/* LINKS */}
-      <div className="small-link z-20 flex flex-col items-center font-grotesk text-xl">
+      <div
+        ref={linksRef}
+        className="small-link z-20 flex flex-col items-center font-grotesk text-xl"
+      >
         {linksList.map((link) => (
           <a
             key={link.href}
@@ -75,18 +119,20 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
       </div>
 
       {/* CLOSE BUTTON */}
-      <button
-        className="group flex relative items-center uppercase tracking-wider text-[#F9F4FA] bg-[#141414] pointer-events-auto rounded-full transition-all duration-500 delay-300 px-4 py-0.5 pr-10 cursor-pointer "
-        onClick={() => {
-          setShowExperiments(false);
-          playCloseSound();
-        }}
-      >
-        CLOSE{"    "}
-        <p className="absolute top-1/2 right-4 -translate-y-1/2 group-hover:rotate-45 transition-all duration-300">
-          ✦
-        </p>
-      </button>
+      <div ref={closeButtonRef}>
+        <button
+          className="group flex relative items-center uppercase tracking-wider text-[#F9F4FA] bg-[#141414] pointer-events-auto rounded-full transition-all duration-500 delay-300 px-4 py-0.5 pr-10 cursor-pointer"
+          onClick={() => {
+            setShowExperiments(false);
+            playCloseSound();
+          }}
+        >
+          CLOSE{"    "}
+          <p className="absolute top-1/2 right-4 -translate-y-1/2 group-hover:rotate-45 transition-all duration-300">
+            ✦
+          </p>
+        </button>
+      </div>
     </div>
   );
 };
