@@ -72,6 +72,50 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         delay: 0.8,
         ease: "power2.out",
       });
+    } else if (!isVisible) {
+      gsap.to(titleRef.current, {
+        duration: 0.5,
+        filter: "blur(10px)",
+        opacity: 0,
+        ease: "power2.out",
+        onComplete: () => {
+          setTimeout(() => {
+            titleRef.current.style.opacity = "1";
+            titleRef.current.style.filter = "blur(0px)";
+          }, 500);
+        },
+      });
+
+      gsap.to(linksRef.current.children, {
+        duration: 0.5,
+        y: -10,
+        filter: "blur(5px)",
+        opacity: 0,
+        stagger: 0.1,
+        ease: "power2.out",
+        onComplete: () => {
+          setTimeout(() => {
+            for (const child of linksRef.current.children) {
+              child.style.opacity = "1";
+              child.style.filter = "blur(0px)";
+              child.style.transform = "translateY(0px)";
+            }
+          }, 500);
+        },
+      });
+
+      gsap.to(closeButtonRef.current, {
+        opacity: 0,
+        filter: "blur(5px)",
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          setTimeout(() => {
+            closeButtonRef.current.style.opacity = "1";
+            closeButtonRef.current.style.filter = "blur(0px)";
+          }, 500);
+        },
+      });
     }
   }, [isVisible]);
 
@@ -84,6 +128,7 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
         opacity: isVisible ? "1" : "0",
+        transitionDelay: isVisible ? "0s" : "0.5s",
         pointerEvents: isVisible ? "auto" : "none",
       }}
       className="z-30 h-dvh w-screen fixed top-0 left-0 bg-[#F9F4FA] flex flex-col justify-center items-center gap-10 text-[#141414] font-grotesk transition-opacity duration-500 ease-in-out"
