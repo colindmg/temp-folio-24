@@ -200,6 +200,6 @@ svg {
   opacity: 0.7;
 }
 
-.small-link:hover .peer:not(:hover) {
+/* .peer:not(:hover) {
   opacity: 0.5;
-}
+} */

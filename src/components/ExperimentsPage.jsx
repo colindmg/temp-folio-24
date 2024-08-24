@@ -41,6 +41,35 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
     closeSound.play();
   };
 
+  // GESTION DU LIEN HOVERED
+  const hoveredLinkRef = useRef(null);
+
+  const handleMouseEnter = (linkHref) => {
+    hoveredLinkRef.current = linkHref;
+    playCloseSound();
+    updateLinksOpacity();
+  };
+
+  const handleMouseLeave = () => {
+    hoveredLinkRef.current = null;
+    updateLinksOpacity();
+  };
+
+  const updateLinksOpacity = () => {
+    if (linksRef.current) {
+      Array.from(linksRef.current.children).forEach((link) => {
+        if (
+          hoveredLinkRef.current === null ||
+          hoveredLinkRef.current === link.href
+        ) {
+          link.style.opacity = "1";
+        } else {
+          link.style.opacity = "0.5";
+        }
+      });
+    }
+  };
+
   // ANIMATION GSAP
   const titleRef = useRef(null);
   const linksRef = useRef(null);
@@ -55,15 +84,23 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         ease: "power2.out",
       });
 
-      gsap.from(linksRef.current.children, {
-        duration: 0.8,
-        y: 10,
-        filter: "blur(5px)",
-        opacity: 0,
-        stagger: 0.1,
-        delay: 0.3,
-        ease: "power2.out",
-      });
+      gsap.fromTo(
+        linksRef.current.children,
+        {
+          y: 10,
+          filter: "blur(5px)",
+          opacity: 0,
+        },
+        {
+          y: 0,
+          filter: "blur(0px)",
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          delay: 0.3,
+          ease: "power2.out",
+        }
+      );
 
       gsap.from(closeButtonRef.current, {
         opacity: 0,
@@ -93,15 +130,15 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         opacity: 0,
         stagger: 0.1,
         ease: "power2.out",
-        onComplete: () => {
-          setTimeout(() => {
-            for (const child of linksRef.current.children) {
-              child.style.opacity = "1";
-              child.style.filter = "blur(0px)";
-              child.style.transform = "translateY(0px)";
-            }
-          }, 500);
-        },
+        // onComplete: () => {
+        //   setTimeout(() => {
+        //     for (const child of linksRef.current.children) {
+        //       child.style.opacity = "1";
+        //       child.style.filter = "blur(0px)";
+        //       child.style.transform = "translateY(0px)";
+        //     }
+        //   }, 500);
+        // },
       });
 
       gsap.to(closeButtonRef.current, {
@@ -118,6 +155,13 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
       });
     }
   }, [isVisible]);
+
+  // SET DEFAULT OPACITY
+  // useEffect(() => {
+  //   if (!isVisible) {
+  //     setAllLinksOpacity("0");
+  //   }
+  // }, [isVisible]);
 
   return (
     <div
@@ -143,7 +187,7 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         ref={linksRef}
         className="small-link z-20 flex flex-col items-center font-grotesk text-xl"
       >
-        {linksList.map((link) => (
+        {/* {linksList.map((link) => (
           <a
             key={link.href}
             target="_blank"
@@ -152,6 +196,23 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
             onMouseEnter={() => {
               playCloseSound();
             }}
+            onClick={() => {
+              playOpenSound();
+            }}
+          >
+            <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
+              {link.text}
+            </span>
+          </a>
+        ))} */}
+        {linksList.map((link) => (
+          <a
+            key={link.href}
+            target="_blank"
+            href={link.href}
+            className="group py-0.5"
+            onMouseEnter={() => handleMouseEnter(link.href)}
+            onMouseLeave={handleMouseLeave}
             onClick={() => {
               playOpenSound();
             }}

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useRef } from "react";
 import VideoButton from "./VideoButton";
 
 const linksList = [
@@ -33,6 +34,39 @@ const Texts = ({ setShowExperiments }) => {
     closeSound.play();
   };
 
+  // GESTION DU LIEN HOVERED
+  const hoveredLinkRef = useRef(null);
+
+  const handleMouseEnter = (linkHref) => {
+    hoveredLinkRef.current = linkHref;
+    playCloseSound();
+    updateLinksOpacity();
+  };
+
+  const handleMouseLeave = () => {
+    hoveredLinkRef.current = null;
+    updateLinksOpacity();
+  };
+
+  const updateLinksOpacity = () => {
+    document.querySelectorAll("a").forEach((link) => {
+      if (
+        hoveredLinkRef.current === null ||
+        hoveredLinkRef.current === link.href
+      ) {
+        link.style.opacity = 1;
+      } else {
+        link.style.opacity = 0.5;
+      }
+    });
+
+    document.querySelector(".experimentLink").style.opacity =
+      hoveredLinkRef.current === "experiments" ||
+      hoveredLinkRef.current === null
+        ? 1
+        : 0.5;
+  };
+
   return (
     <>
       <div className="z-20 font-grotesk pointer-events-none flex flex-col items-start gap-1">
@@ -44,18 +78,15 @@ const Texts = ({ setShowExperiments }) => {
         />
       </div>
 
-      <div className="small-link z-20 flex flex-col font-grotesk text-xl items-start sm:self-end">
+      <div className="z-20 flex flex-col font-grotesk text-xl items-start sm:self-end">
         {linksList.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="group peer py-0.5"
-            onMouseEnter={() => {
-              playCloseSound();
-            }}
-            onClick={() => {
-              playOpenSound();
-            }}
+            className="group py-0.5"
+            onMouseEnter={() => handleMouseEnter(link.href)}
+            onMouseLeave={handleMouseLeave}
+            onClick={playOpenSound}
           >
             →{" "}
             <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
@@ -66,10 +97,9 @@ const Texts = ({ setShowExperiments }) => {
 
         {/* LIENS DES EXPERIMENTS */}
         <a
-          className="group peer py-0.5 cursor-pointer"
-          onMouseEnter={() => {
-            playCloseSound();
-          }}
+          className="experimentLink group py-0.5 cursor-pointer"
+          onMouseEnter={() => handleMouseEnter("experiments")}
+          onMouseLeave={handleMouseLeave}
           onClick={() => {
             playOpenSound();
             setShowExperiments(true);
