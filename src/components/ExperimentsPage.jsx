@@ -7,6 +7,10 @@ gsap.registerPlugin(useGSAP);
 
 const linksList = [
   {
+    href: "https://artspiral.netlify.app/",
+    text: "ART⎯SPIRAL",
+  },
+  {
     href: "https://isometricmusicplayer.netlify.app/",
     text: "ISOMETRIC MUSIC PLAYER",
   },
