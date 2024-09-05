@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import BubbleGradient from "./components/BubbleGradient";
 import ExperimentsPage from "./components/ExperimentsPage";
+import StarsSection from "./components/StarsSection";
 import Texts from "./components/Texts";
-import noiseImage from "/img/noise.webp";
+import darkBackgroundImage from "/img/bg-dark.webp";
 
 function App() {
   // VARIABLES
@@ -23,12 +23,13 @@ function App() {
     <>
       {/* MAIN PAGE */}
       {displayMainPage ? (
-        <div className="relative text-white h-dvh w-screen bg-[#141414] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
+        <div className="relative text-white h-dvh w-screen bg-[#242424] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
           <Texts setShowExperiments={setShowExperiments} />
-          <BubbleGradient />
+          {/* <BubbleGradient /> */}
+          <StarsSection />
           <div
-            className="absolute top-0 left-0 w-full h-full z-[15] bg-repeat opacity-[0.03] pointer-events-none"
-            style={{ backgroundImage: `url(${noiseImage})` }}
+            className="absolute top-0 left-0 w-full h-full z-[15] pointer-events-none bg-fixed bg-cover bg-center"
+            style={{ backgroundImage: `url(${darkBackgroundImage})` }}
           ></div>
         </div>
       ) : null}

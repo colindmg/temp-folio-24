@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 const linksList = [
   {
     href: "https://artspiral.netlify.app/",
-    text: "ART⎯SPIRAL",
+    text: "ART ⎯ SPIRAL",
   },
   {
     href: "https://isometricmusicplayer.netlify.app/",
@@ -134,15 +134,6 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         opacity: 0,
         stagger: 0.1,
         ease: "power2.out",
-        // onComplete: () => {
-        //   setTimeout(() => {
-        //     for (const child of linksRef.current.children) {
-        //       child.style.opacity = "1";
-        //       child.style.filter = "blur(0px)";
-        //       child.style.transform = "translateY(0px)";
-        //     }
-        //   }, 500);
-        // },
       });
 
       gsap.to(closeButtonRef.current, {
@@ -160,17 +151,10 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
     }
   }, [isVisible]);
 
-  // SET DEFAULT OPACITY
-  // useEffect(() => {
-  //   if (!isVisible) {
-  //     setAllLinksOpacity("0");
-  //   }
-  // }, [isVisible]);
-
   return (
     <div
       style={{
-        backgroundImage: "url('/img/bg-light.png')",
+        backgroundImage: "url('/img/bg-light.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -191,24 +175,6 @@ const ExperimentsPage = ({ isVisible, setShowExperiments }) => {
         ref={linksRef}
         className="small-link z-20 flex flex-col items-center font-grotesk text-xl"
       >
-        {/* {linksList.map((link) => (
-          <a
-            key={link.href}
-            target="_blank"
-            href={link.href}
-            className="group peer py-0.5"
-            onMouseEnter={() => {
-              playCloseSound();
-            }}
-            onClick={() => {
-              playOpenSound();
-            }}
-          >
-            <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
-              {link.text}
-            </span>
-          </a>
-        ))} */}
         {linksList.map((link) => (
           <a
             key={link.href}

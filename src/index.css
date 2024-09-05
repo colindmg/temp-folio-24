@@ -200,6 +200,24 @@ svg {
   opacity: 0.7;
 }
 
-/* .peer:not(:hover) {
-  opacity: 0.5;
-} */
+/* ANIMATIONS DES ETOILES */
+
+/* 1ere animationn de spin */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2eme animation de spin */
+@keyframes spin2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
