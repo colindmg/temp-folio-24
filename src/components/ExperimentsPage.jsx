@@ -97,12 +97,11 @@ const ExperimentsPage = ({ setShowExperiments }) => {
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
-        // opacity: isVisible ? "1" : "0",
-        // transitionDelay: isVisible ? "0s" : "0.5s",
-        // pointerEvents: isVisible ? "auto" : "none",
       }}
       className="z-30 h-dvh w-screen fixed top-0 left-0 bg-[#F9F4FA] flex flex-col justify-center items-center gap-10 text-[#141414] font-grotesk transition-opacity duration-500 ease-in-out"
     >
+      <div className="grain absolute top-0 left-0 w-full h-full z-[-1]"></div>
+
       {/* TITLE */}
       <motion.h1
         key={"experiments-page-title"}
