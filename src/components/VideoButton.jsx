@@ -1,3 +1,4 @@
+import { easeInOut, motion } from "framer-motion";
 import { useState } from "react";
 
 import PropTypes from "prop-types";
@@ -7,7 +8,13 @@ const VideoButton = ({ playCloseSound, playOpenSound }) => {
   const [isOpenButtonShown, setIsOpenButtonShown] = useState(true);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, filter: "blur(5px)" }}
+      animate={{
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0.75, delay: 1.0, ease: easeInOut },
+      }}
       className={`flex gap-2 items-start mt-1 ${
         isOpen ? "" : "-translate-x-2"
       } transition-all duration-500`}
@@ -73,7 +80,7 @@ const VideoButton = ({ playCloseSound, playOpenSound }) => {
           ✦
         </p>
       </button>
-    </div>
+    </motion.div>
   );
 };
 

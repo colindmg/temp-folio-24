@@ -87,19 +87,23 @@ function App() {
       </AnimatePresence>
 
       {/* MAIN PAGE */}
-      <div className="relative text-white h-dvh w-screen bg-[#242424] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
-        <Texts setShowExperiments={setShowExperiments} />
-        <StarsSection />
+      <AnimatePresence>
+        {!loading ? (
+          <div className="relative text-white h-dvh w-screen bg-[#242424] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
+            <Texts setShowExperiments={setShowExperiments} />
+            <StarsSection />
 
-        {/* GRAINY BACKGROUND */}
-        <div className="grain absolute top-0 left-0 w-full h-full z-[16]"></div>
+            {/* GRAINY BACKGROUND */}
+            <div className="grain absolute top-0 left-0 w-full h-full z-[16]"></div>
 
-        {/* IMAGE DE BACKGROUND */}
-        <div
-          className="absolute top-0 left-0 w-full h-full z-[15] pointer-events-none bg-fixed bg-cover bg-center"
-          style={{ backgroundImage: `url(${darkBackgroundImage})` }}
-        ></div>
-      </div>
+            {/* IMAGE DE BACKGROUND */}
+            <div
+              className="absolute top-0 left-0 w-full h-full z-[15] pointer-events-none bg-fixed bg-cover bg-center"
+              style={{ backgroundImage: `url(${darkBackgroundImage})` }}
+            ></div>
+          </div>
+        ) : null}
+      </AnimatePresence>
 
       {/* EXPERIMENTS PAGE */}
       <AnimatePresence>

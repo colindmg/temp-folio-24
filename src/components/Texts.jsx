@@ -1,3 +1,4 @@
+import { easeInOut, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useRef } from "react";
 import VideoButton from "./VideoButton";
@@ -70,8 +71,28 @@ const Texts = ({ setShowExperiments }) => {
   return (
     <>
       <div className="z-20 font-grotesk pointer-events-none flex flex-col items-start gap-1">
-        <h1 className="text-4xl relative">Col&apos;</h1>
-        <h2 className="text-2xl font-thin">Freelance web developer</h2>
+        <motion.h1
+          initial={{ opacity: 0, filter: "blur(5px)" }}
+          animate={{
+            opacity: 1,
+            filter: "blur(0px)",
+            transition: { duration: 0.75, delay: 0.5, ease: easeInOut },
+          }}
+          className="text-4xl relative"
+        >
+          Col&apos;
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, filter: "blur(5px)" }}
+          animate={{
+            opacity: 1,
+            filter: "blur(0px)",
+            transition: { duration: 0.75, delay: 0.7, ease: easeInOut },
+          }}
+          className="text-2xl font-thin"
+        >
+          Freelance web developer
+        </motion.h2>
         <VideoButton
           playCloseSound={playCloseSound}
           playOpenSound={playOpenSound}
@@ -79,8 +100,19 @@ const Texts = ({ setShowExperiments }) => {
       </div>
 
       <div className="z-20 flex flex-col font-grotesk text-xl items-start sm:self-end">
-        {linksList.map((link) => (
-          <a
+        {linksList.map((link, index) => (
+          <motion.a
+            initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: {
+                duration: 0.75,
+                delay: 1.2 + index * 0.1,
+                ease: easeInOut,
+              },
+            }}
             key={link.href}
             href={link.href}
             className="group py-0.5"
@@ -92,11 +124,22 @@ const Texts = ({ setShowExperiments }) => {
             <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
               {link.text}
             </span>
-          </a>
+          </motion.a>
         ))}
 
         {/* LIENS DES EXPERIMENTS */}
-        <a
+        <motion.a
+          initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: {
+              duration: 0.75,
+              delay: 1.2 + linksList.length * 0.1,
+              ease: easeInOut,
+            },
+          }}
           className="experimentLink group py-0.5 cursor-pointer"
           onMouseEnter={() => handleMouseEnter("experiments")}
           onMouseLeave={handleMouseLeave}
@@ -109,7 +152,7 @@ const Texts = ({ setShowExperiments }) => {
           <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
             EXPERIMENTS
           </span>
-        </a>
+        </motion.a>
       </div>
     </>
   );

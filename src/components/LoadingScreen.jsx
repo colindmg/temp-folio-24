@@ -18,7 +18,9 @@ const LoadingScreen = ({ percentage }) => {
       className="fixed text-white top-0 left-0 w-screen h-screen bg-[#3D3D3D] flex z-[100]"
     >
       {/* PROGRESS BAR & PERCENTAGE*/}
-      <p className="fixed bottom-5 right-20">{percentage}</p>
+      <p className="fixed bottom-5 lg:right-24 md:right-20 sm:right-16 right-12">
+        {percentage}
+      </p>
       <motion.div
         className="fixed bottom-0 left-0 w-full h-0.5 bg-white"
         initial={{ width: "0%" }}
@@ -27,7 +29,7 @@ const LoadingScreen = ({ percentage }) => {
       ></motion.div>
 
       {/* STARS & TEXT */}
-      <div className="flex flex-col gap-2 absolute top-1/2 -translate-y-1/2 left-20">
+      <div className="flex flex-col gap-2 absolute top-1/2 -translate-y-1/2 lg:left-24 md:left-20 sm:left-16 left-12">
         <motion.div
           variants={loadingVariants}
           initial="initial"
