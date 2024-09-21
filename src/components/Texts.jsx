@@ -120,8 +120,10 @@ const Texts = ({ setShowExperiments }) => {
             onMouseLeave={handleMouseLeave}
             onClick={playOpenSound}
           >
-            →{" "}
-            <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
+            <span className="absolute group-hover:-rotate-45 transition-transform duration-200">
+              →
+            </span>
+            <span className="group-hover:underline underline-offset-4 decoration-[1.5px] pl-5">
               {link.text}
             </span>
           </motion.a>

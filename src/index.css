@@ -52,7 +52,7 @@ body {
   width: calc(100% + 20rem);
   height: calc(100% + 20rem);
   position: fixed;
-  background-image: url("../public/img/noise.webp");
+  background-image: url("/img/noise.webp");
   opacity: 0.1;
   pointer-events: none;
   -webkit-animation: noise 1s steps(2) infinite;
