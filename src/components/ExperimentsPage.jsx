@@ -98,7 +98,7 @@ const ExperimentsPage = ({ setShowExperiments }) => {
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
       }}
-      className="z-30 h-dvh w-screen fixed top-0 left-0 bg-[#F9F4FA] flex flex-col justify-center items-center gap-10 text-[#141414] font-grotesk transition-opacity duration-500 ease-in-out"
+      className="z-30 h-dvh w-screen fixed top-0 left-0 bg-[#F9F4FA] flex flex-col justify-center items-center gap-10 text-[#141414] font-grotesk"
     >
       <div className="grain absolute top-0 left-0 w-full h-full z-[-1]"></div>
 

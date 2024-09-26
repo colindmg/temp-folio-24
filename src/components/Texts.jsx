@@ -72,6 +72,7 @@ const Texts = ({ setShowExperiments }) => {
     <>
       <div className="z-20 font-grotesk pointer-events-none flex flex-col items-start gap-1">
         <motion.h1
+          key={"col"}
           initial={{ opacity: 0, filter: "blur(5px)" }}
           animate={{
             opacity: 1,
@@ -83,6 +84,7 @@ const Texts = ({ setShowExperiments }) => {
           Col&apos;
         </motion.h1>
         <motion.h2
+          key={"freelance"}
           initial={{ opacity: 0, filter: "blur(5px)" }}
           animate={{
             opacity: 1,
@@ -102,6 +104,7 @@ const Texts = ({ setShowExperiments }) => {
       <div className="z-20 flex flex-col font-grotesk text-xl items-start sm:self-end">
         {linksList.map((link, index) => (
           <motion.a
+            key={link.href}
             initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
             animate={{
               opacity: 1,
@@ -113,7 +116,6 @@ const Texts = ({ setShowExperiments }) => {
                 ease: easeInOut,
               },
             }}
-            key={link.href}
             href={link.href}
             className="group py-0.5"
             onMouseEnter={() => handleMouseEnter(link.href)}
@@ -131,6 +133,7 @@ const Texts = ({ setShowExperiments }) => {
 
         {/* LIENS DES EXPERIMENTS */}
         <motion.a
+          key={"experiments"}
           initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
           animate={{
             opacity: 1,
