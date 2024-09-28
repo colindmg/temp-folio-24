@@ -27,7 +27,7 @@ const VideoButton = ({ playCloseSound, playOpenSound }) => {
         style={{ maxWidth: isOpen ? "calc(68vw + 8px)" : "0" }}
       >
         <video
-          src="/videos/compil.mp4"
+          src="/videos/compil2.mp4"
           className={` ${
             isOpen ? "w-[500px] max-w-[68vw] opacity-100" : "w-0 opacity-0"
           } transition-all duration-500 rounded-md`}
