@@ -8,8 +8,8 @@ gsap.registerPlugin(useGSAP);
 
 const linksList = [
   {
-    href: "https://artspiral.netlify.app/",
-    text: "ART ⎯ SPIRAL",
+    href: "https://artstuffs.netlify.app/",
+    text: "ART ⎯ STUFFS",
   },
   {
     href: "https://isometricmusicplayer.netlify.app/",
