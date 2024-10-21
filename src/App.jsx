@@ -54,17 +54,22 @@ function App() {
             resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
           };
         } else if (file.endsWith(".wav") || file.endsWith(".mp3")) {
-          const audio = new Audio();
-          audio.src = file;
-          audio.oncanplaythrough = () => {
+          if (window.innerWidth > 600) {
+            const audio = new Audio();
+            audio.src = file;
+            audio.oncanplaythrough = () => {
+              updateProgress();
+              resolve();
+            };
+            audio.onerror = () => {
+              console.error(`Erreur lors du chargement du son ${file}`);
+              updateProgress();
+              resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
+            };
+          } else {
             updateProgress();
             resolve();
-          };
-          audio.onerror = () => {
-            console.error(`Erreur lors du chargement du son ${file}`);
-            updateProgress();
-            resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
-          };
+          }
         } else if (file.endsWith(".mp4")) {
           const video = document.createElement("video");
           video.oncanplaythrough = () => {
