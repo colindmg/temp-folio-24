@@ -15,6 +15,7 @@ const filesToLoad = [
   "/img/8b-star.webp",
   "/sounds/open.wav",
   "/sounds/close.wav",
+  "/videos/compil2.mp4",
 ];
 
 function App() {
@@ -32,7 +33,9 @@ function App() {
       const percentage = Math.round((loadedFiles / totalFiles) * 100);
       setLoadingPercentage(percentage);
       if (loadedFiles === totalFiles) {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
 
@@ -53,7 +56,7 @@ function App() {
         } else if (file.endsWith(".wav") || file.endsWith(".mp3")) {
           const audio = new Audio();
           audio.src = file;
-          audio.onloadeddata = () => {
+          audio.oncanplaythrough = () => {
             updateProgress();
             resolve();
           };
@@ -62,6 +65,16 @@ function App() {
             updateProgress();
             resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
           };
+        } else if (file.endsWith(".mp4")) {
+          const video = document.createElement("video");
+          video.oncanplaythrough = () => {
+            updateProgress();
+            resolve();
+          };
+          video.setAttribute("muted", "");
+          video.setAttribute("playsinline", "");
+          video.src = file;
+          video.load();
         } else {
           // Type de fichier non supporté
           updateProgress();
