@@ -25,7 +25,7 @@ const linksList = [
   },
   {
     href: "https://hoverlist.netlify.app/",
-    text: "LOCOMOTIVE.CA HOVER EFFECT",
+    text: "LIST HOVER CARD",
   },
 ];
 
