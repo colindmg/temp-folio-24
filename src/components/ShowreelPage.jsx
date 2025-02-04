@@ -41,6 +41,30 @@ const ShowreelPage = ({ setShowShowreel }) => {
         Showreel
       </motion.h1>
 
+      {/* VIDEO */}
+      <motion.div
+        key={"showreel-video"}
+        className="relative"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { delay: 0.5, duration: 0.5, ease: easeInOut },
+        }}
+        exit={{
+          opacity: 0,
+          transition: { duration: 0.5, ease: easeOut },
+        }}
+      >
+        <iframe
+          className="rounded-lg border-2 overflow-hidden border-[#141414] max-w-[90vw] w-[560px] h-[315px] sm:w-[640px] sm:h-[360px] md:w-[800px] md:h-[450px] lg:w-[1000px] lg:h-[563px]"
+          src="https://www.youtube.com/embed/BLQHLYOoSv0?si=uj_VqkaWAfvogG0I"
+          title="Showreel 2024 - @colindmg"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </motion.div>
+
       {/* CLOSE BUTTON */}
       <motion.div
         key={"showreel-close-button"}
