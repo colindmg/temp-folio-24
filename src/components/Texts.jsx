@@ -18,7 +18,7 @@ const linksList = [
   },
 ];
 
-const Texts = ({ setShowExperiments }) => {
+const Texts = ({ setShowExperiments, setShowShowreel }) => {
   // GESTION DES SONS
   const openSound = new Audio("/sounds/open.wav");
   const closeSound = new Audio("/sounds/close.wav");
@@ -64,6 +64,11 @@ const Texts = ({ setShowExperiments }) => {
     document.querySelector(".experimentLink").style.opacity =
       hoveredLinkRef.current === "experiments" ||
       hoveredLinkRef.current === null
+        ? 1
+        : 0.5;
+
+    document.querySelector(".showreelLink").style.opacity =
+      hoveredLinkRef.current === "showreel" || hoveredLinkRef.current === null
         ? 1
         : 0.5;
   };
@@ -158,6 +163,34 @@ const Texts = ({ setShowExperiments }) => {
             EXPERIMENTS
           </span>
         </motion.a>
+
+        {/* LIEN DU SHOWREEL */}
+        <motion.a
+          key={"showreel"}
+          initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: {
+              duration: 0.75,
+              delay: 1.2 + (linksList.length + 1) * 0.1,
+              ease: easeInOut,
+            },
+          }}
+          className="showreelLink group py-0.5 cursor-pointer"
+          onMouseEnter={() => handleMouseEnter("showreel")}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => {
+            playOpenSound();
+            setShowShowreel(true);
+          }}
+        >
+          →{" "}
+          <span className="group-hover:underline underline-offset-4 decoration-[1.5px]">
+            SHOWREEL
+          </span>
+        </motion.a>
       </div>
     </>
   );
@@ -165,6 +198,7 @@ const Texts = ({ setShowExperiments }) => {
 
 Texts.propTypes = {
   setShowExperiments: PropTypes.func.isRequired,
+  setShowShowreel: PropTypes.func.isRequired,
 };
 
 export default Texts;

@@ -2,6 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import ExperimentsPage from "./components/ExperimentsPage";
 import LoadingScreen from "./components/LoadingScreen";
+import ShowreelPage from "./components/ShowreelPage";
 import StarsSection from "./components/StarsSection";
 import Texts from "./components/Texts";
 import darkBackgroundImage from "/img/bg-dark.webp";
@@ -21,6 +22,7 @@ const filesToLoad = [
 function App() {
   // VARIABLES
   const [showExperiments, setShowExperiments] = useState(false);
+  const [showShowreel, setShowShowreel] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadingPercentage, setLoadingPercentage] = useState(0);
 
@@ -108,7 +110,10 @@ function App() {
       <AnimatePresence>
         {!loading ? (
           <div className="relative text-white h-dvh w-screen bg-[#242424] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
-            <Texts setShowExperiments={setShowExperiments} />
+            <Texts
+              setShowExperiments={setShowExperiments}
+              setShowShowreel={setShowShowreel}
+            />
             <StarsSection />
 
             {/* GRAINY BACKGROUND */}
@@ -123,10 +128,14 @@ function App() {
         ) : null}
       </AnimatePresence>
 
-      {/* EXPERIMENTS PAGE */}
+      {/* EXPERIMENTS & SHOWREEL PAGE */}
       <AnimatePresence>
         {showExperiments ? (
           <ExperimentsPage setShowExperiments={setShowExperiments} />
+        ) : null}
+
+        {showShowreel ? (
+          <ShowreelPage setShowShowreel={setShowShowreel} />
         ) : null}
       </AnimatePresence>
     </>
