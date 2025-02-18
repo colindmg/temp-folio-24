@@ -8,11 +8,16 @@ gsap.registerPlugin(useGSAP);
 
 const linksList = [
   {
+    href: "https://labcolindmg.netlify.app/",
+    text: "WEBGL EXPERIMENTS",
+  },
+  {
     href: "https://artstuffs.netlify.app/",
     text: "ART ⎯ STUFFS",
   },
   {
-    href: "https://isometricmusicplayer.netlify.app/",
+    // href: "https://isometricmusicplayer.netlify.app/",
+    href: "https://recordsss.vercel.app/share/colin.demouge",
     text: "ISOMETRIC MUSIC PLAYER",
   },
   {
@@ -24,8 +29,8 @@ const linksList = [
     text: "NETFLIX 'FOR YOU' PAGE",
   },
   {
-    href: "https://hoverlist.netlify.app/",
-    text: "LIST HOVER CARD",
+    href: "https://www.x.com/colindmg",
+    text: "& MORE ON X →",
   },
 ];
 
