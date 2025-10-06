@@ -9,12 +9,16 @@ const linksList = [
     text: "TWITTER / X",
   },
   {
+    href: "https://linkedin.com/in/colindmg",
+    text: "LINKEDIN",
+  },
+  {
     href: "https://github.com/colindmg",
     text: "GITHUB",
   },
   {
     href: "mailto:colin.demouge@gmail.com",
-    text: "EMAIL",
+    text: "CONTACT",
   },
 ];
 
