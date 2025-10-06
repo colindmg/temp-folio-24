@@ -126,6 +126,7 @@ const Texts = ({ setShowExperiments, setShowShowreel }) => {
               },
             }}
             href={link.href}
+            target="_blank"
             className="group py-0.5"
             onMouseEnter={() => handleMouseEnter(link.href)}
             onMouseLeave={handleMouseLeave}
