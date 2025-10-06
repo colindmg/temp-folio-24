@@ -16,7 +16,6 @@ const filesToLoad = [
   "/img/8b-star.webp",
   "/sounds/open.wav",
   "/sounds/close.wav",
-  "/videos/compil2.mp4",
 ];
 
 function App() {

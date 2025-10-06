@@ -44,19 +44,19 @@ const ShowreelPage = ({ setShowShowreel }) => {
       {/* VIDEO */}
       <motion.div
         key={"showreel-video"}
-        className="relative"
-        initial={{ opacity: 0 }}
+        className="relative bg-neutral-900 rounded-lg border-2 overflow-hidden border-[#141414]"
+        initial={{ opacity: 0.5 }}
         animate={{
           opacity: 1,
           transition: { delay: 0.5, duration: 0.5, ease: easeInOut },
         }}
         exit={{
-          opacity: 0,
+          opacity: 0.5,
           transition: { duration: 0.5, ease: easeOut },
         }}
       >
         <iframe
-          className="rounded-lg border-2 overflow-hidden border-[#141414] max-w-[90vw] w-[560px] h-[315px] sm:w-[640px] sm:h-[360px] md:w-[800px] md:h-[450px] lg:w-[1000px] lg:h-[563px]"
+          className="max-w-[90vw] w-[560px] h-[315px] sm:w-[640px] sm:h-[360px] md:w-[800px] md:h-[450px] lg:w-[1000px] lg:h-[563px]"
           src="https://www.youtube.com/embed/BLQHLYOoSv0?si=uj_VqkaWAfvogG0I"
           title="Showreel 2024 - @colindmg"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
