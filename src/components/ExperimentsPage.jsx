@@ -8,6 +8,10 @@ gsap.registerPlugin(useGSAP);
 
 const linksList = [
   {
+    href: "https://etheris.netlify.app/",
+    text: "EHERIS",
+  },
+  {
     href: "https://labcolindmg.netlify.app/",
     text: "WEBGL EXPERIMENTS",
   },
