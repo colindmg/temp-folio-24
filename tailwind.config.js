@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import fluidTailwind from "fluid-tailwindcss";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -12,5 +14,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    fluidTailwind({
+      minViewport: 375,
+      maxViewport: 1440,
+    }),
+  ],
 };

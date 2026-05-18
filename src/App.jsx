@@ -2,14 +2,14 @@ import ShowreelVideo from "./components/ShowreelVideo";
 
 const App = () => {
   return (
-    <div className="relative p-8 flex flex-col justify-between w-full h-dvh bg-[#FAFAFA] text-[#1A1A1A] font-medium tracking-[-0.06em] gap-8">
-      <div className="flex flex-col text-6xl w-[700px] max-w-full leading-[0.9]">
+    <div className="relative p-6 flex flex-col justify-between w-full h-dvh bg-[#FAFAFA] text-[#1A1A1A] font-medium tracking-[-0.06em] gap-8">
+      <div className="flex flex-col fl-text-4xl/6xl w-[700px] max-w-full leading-[0.9]">
         <h1 className="font-[550]">/colindmg</h1>
         <p>freelance creative developer based in paris.</p>
       </div>
 
       <div className="flex flex-col w-[700px] max-w-full gap-4">
-        <p className="text-xl leading-[1.1] tracking-[-0.02em]">
+        <p className="text-xl max-sm:text-lg max-sm:leading-[1.2] leading-[1.1] tracking-[-0.02em]">
           Here is some of my work :{" "}
           <a
             // href="https://naam-journey.netlify.app"
