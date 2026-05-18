@@ -1,144 +1,76 @@
-import { AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import ExperimentsPage from "./components/ExperimentsPage";
-import LoadingScreen from "./components/LoadingScreen";
-import ShowreelPage from "./components/ShowreelPage";
-import StarsSection from "./components/StarsSection";
-import Texts from "./components/Texts";
-import darkBackgroundImage from "/img/bg-dark.webp";
+import ShowreelVideo from "./components/ShowreelVideo";
 
-const filesToLoad = [
-  "/img/bg-dark.webp",
-  "/img/bg-light.webp",
-  "/img/noise.webp",
-  "/img/4b-star.webp",
-  "/img/6b-star.webp",
-  "/img/8b-star.webp",
-  "/sounds/open.wav",
-  "/sounds/close.wav",
-];
-
-function App() {
-  // VARIABLES
-  const [showExperiments, setShowExperiments] = useState(false);
-  const [showShowreel, setShowShowreel] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [loadingPercentage, setLoadingPercentage] = useState(0);
-
-  useEffect(() => {
-    let loadedFiles = 0;
-    const totalFiles = filesToLoad.length;
-
-    const updateProgress = () => {
-      loadedFiles += 1;
-      const percentage = Math.round((loadedFiles / totalFiles) * 100);
-      setLoadingPercentage(percentage);
-      if (loadedFiles === totalFiles) {
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
-      }
-    };
-
-    const loadFile = (file) => {
-      return new Promise((resolve) => {
-        if (file.endsWith(".webp") || file.endsWith(".png")) {
-          const img = new Image();
-          img.src = file;
-          img.onload = () => {
-            updateProgress();
-            resolve();
-          };
-          img.onerror = () => {
-            console.error(`Erreur lors du chargement de l'image ${file}`);
-            updateProgress();
-            resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
-          };
-        } else if (file.endsWith(".wav") || file.endsWith(".mp3")) {
-          if (window.innerWidth > 600) {
-            const audio = new Audio();
-            audio.src = file;
-            audio.oncanplaythrough = () => {
-              updateProgress();
-              resolve();
-            };
-            audio.onerror = () => {
-              console.error(`Erreur lors du chargement du son ${file}`);
-              updateProgress();
-              resolve(); // Résoudre malgré l'erreur pour ne pas bloquer
-            };
-          } else {
-            updateProgress();
-            resolve();
-          }
-        } else if (file.endsWith(".mp4")) {
-          const video = document.createElement("video");
-          video.oncanplaythrough = () => {
-            updateProgress();
-            resolve();
-          };
-          video.setAttribute("muted", "");
-          video.setAttribute("playsinline", "");
-          video.src = file;
-          video.load();
-        } else {
-          // Type de fichier non supporté
-          updateProgress();
-          resolve();
-        }
-      });
-    };
-
-    // Charger chaque fichier et mettre à jour le pourcentage
-    filesToLoad.forEach((file) => {
-      loadFile(file).catch((err) => {
-        console.error("Erreur lors du chargement du fichier:", file, err);
-        updateProgress();
-      });
-    });
-  }, []);
-
+const App = () => {
   return (
-    <>
-      {/* LOADING SCREEN */}
-      <AnimatePresence>
-        {loading ? <LoadingScreen percentage={loadingPercentage} /> : null}
-      </AnimatePresence>
+    <div className="relative p-8 flex flex-col justify-between w-full h-dvh bg-[#FAFAFA] text-[#1A1A1A] font-medium tracking-[-0.06em] gap-8">
+      <div className="flex flex-col text-6xl w-[700px] max-w-full leading-[0.9]">
+        <h1 className="font-[550]">/colindmg</h1>
+        <p>freelance creative developer based in paris.</p>
+      </div>
 
-      {/* MAIN PAGE */}
-      <AnimatePresence>
-        {!loading ? (
-          <div className="relative text-white h-dvh w-screen bg-[#242424] flex flex-col justify-between items-start lg:p-24 md:px-20 sm:px-16 px-12 sm:py-24 py-14">
-            <Texts
-              setShowExperiments={setShowExperiments}
-              setShowShowreel={setShowShowreel}
-            />
-            <StarsSection />
+      <div className="flex flex-col w-[700px] max-w-full gap-4">
+        <p className="text-xl leading-[1.1] tracking-[-0.02em]">
+          Here is some of my work :{" "}
+          <a
+            href="https://naam-journey.netlify.app"
+            target="_blank"
+            className="link"
+          >
+            Naam
+          </a>{" "}
+          (narrative website) /{" "}
+          <a
+            href="https://www.pacomepertant.com"
+            target="_blank"
+            className="link"
+          >
+            Pacôme Pertant
+          </a>{" "}
+          (portfolio) /{" "}
+          <a
+            href="https://etheris.netlify.app"
+            target="_blank"
+            className="link"
+          >
+            Etheris
+          </a>{" "}
+          (school project) /{" "}
+          <a
+            href="https://lab-colindmg.netlify.app"
+            target="_blank"
+            className="link"
+          >
+            Lab
+          </a>{" "}
+          (webgl experiments) & more on{" "}
+          <a
+            href="https://twitter.com/colindmg"
+            target="_blank"
+            className="link"
+          >
+            X
+          </a>{" "}
+          or{" "}
+          <a
+            href="https://www.linkedin.com/in/colindmg/"
+            target="_blank"
+            className="link"
+          >
+            Linkedin
+          </a>
+          . Contact me at{" "}
+          <a href="mailto:contact@colindmg.com" className="link">
+            contact@colindmg.com
+          </a>
+          .
+        </p>
 
-            {/* GRAINY BACKGROUND */}
-            <div className="grain absolute top-0 left-0 w-full h-full z-[16]"></div>
+        <ShowreelVideo />
+      </div>
 
-            {/* IMAGE DE BACKGROUND */}
-            <div
-              className="absolute top-0 left-0 w-full h-full z-[15] pointer-events-none bg-fixed bg-cover bg-center"
-              style={{ backgroundImage: `url(${darkBackgroundImage})` }}
-            ></div>
-          </div>
-        ) : null}
-      </AnimatePresence>
-
-      {/* EXPERIMENTS & SHOWREEL PAGE */}
-      <AnimatePresence>
-        {showExperiments ? (
-          <ExperimentsPage setShowExperiments={setShowExperiments} />
-        ) : null}
-
-        {showShowreel ? (
-          <ShowreelPage setShowShowreel={setShowShowreel} />
-        ) : null}
-      </AnimatePresence>
-    </>
+      <div className="absolute inset-0 pointer-events-none grain opacity-10"></div>
+    </div>
   );
-}
+};
 
 export default App;

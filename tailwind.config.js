@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        grotesk: ["Space Grotesk"],
+        grotesk: ["Inter", "sans-serif"],
+      },
+      colors: {
+        "off-white": "#FF0000",
+        "off-black": "#1A1A1A",
       },
     },
   },

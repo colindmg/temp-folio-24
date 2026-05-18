@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 /* IMPORT DE LA FONT SPACE GROTESK */
-@font-face {
+/* @font-face {
   font-family: "Space Grotesk";
   src: url("/fonts/SpaceGrotesk-VariableFont.ttf") format("truetype");
-}
+} */
 
 body {
   overflow: hidden;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* ANIMATIONS DES ETOILES */
@@ -99,4 +99,10 @@ body {
   to {
     transform: translate3d(-7rem, 0, 0);
   }
+}
+
+.link {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
