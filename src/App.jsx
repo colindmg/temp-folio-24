@@ -12,13 +12,14 @@ const App = () => {
         <p className="text-xl leading-[1.1] tracking-[-0.02em]">
           Here is some of my work :{" "}
           <a
-            href="https://naam-journey.netlify.app"
-            target="_blank"
-            className="link"
+            // href="https://naam-journey.netlify.app"
+            href="#"
+            // target="_blank"
+            className="link cursor-wait"
           >
             Naam
           </a>{" "}
-          (narrative website) /{" "}
+          (coming soon) /{" "}
           <a
             href="https://www.pacomepertant.com"
             target="_blank"
@@ -36,18 +37,14 @@ const App = () => {
           </a>{" "}
           (school project) /{" "}
           <a
-            href="https://lab-colindmg.netlify.app"
+            href="https://labcolindmg.netlify.app"
             target="_blank"
             className="link"
           >
             Lab
           </a>{" "}
           (webgl experiments) & more on{" "}
-          <a
-            href="https://twitter.com/colindmg"
-            target="_blank"
-            className="link"
-          >
+          <a href="https://x.com/colindmg" target="_blank" className="link">
             X
           </a>{" "}
           or{" "}
