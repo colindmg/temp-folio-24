@@ -10,6 +10,9 @@ const ShowreelVideo = () => {
 
   const handleCanPlay = () => {
     setCanPlay(true);
+    if (videoRef.current) {
+      videoRef.current.volume = 0.3;
+    }
   };
 
   const togglePlay = () => {
@@ -79,6 +82,8 @@ const ShowreelVideo = () => {
         loop
         className="w-full h-full object-contain"
         onCanPlay={handleCanPlay}
+        onLoadedData={handleCanPlay}
+        onLoadedMetadata={handleCanPlay}
       ></video>
       <div
         className={`overlay absolute inset-0  text-[#FAFAFA] p-3 flex flex-col justify-end ${isPlaying || hasBeenPlayed ? "bg-transparent" : "bg-[#0A0A0A]"}`}
